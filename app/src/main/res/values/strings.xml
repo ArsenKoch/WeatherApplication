@@ -2,4 +2,22 @@
     <string name="app_name">WeatherApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_20_c">20°C</string>
+    <string name="sunny">Sunny</string>
+    <string name="_33_c_15_c">33°C/15°C</string>
+    <string name="sync_button">sync button</string>
+    <string name="search_button">search button</string>
+    <string name="day">Day</string>
+    <string name="hours">Hours</string>
+    <string name="rostov">Rostov</string>
+    <string name="_12_08_2022_17_00">12/08/2022 17:00</string>
+    <string name="picture_app">picture app</string>
+    <string name="image_weather_app">image weather app</string>
+    <string name="hours_fragment">HOURS</string>
+    <string name="days_fragment">DAYS</string>
+    <string name="search">search</string>
+    <string name="time_12_08_2022">Time 12/08/2022</string>
+    <string name="_25_c">25°C</string>
+    <string name="weather_icon">weather icon</string>
+    <string name="empty">Empty</string>
 </resources>
