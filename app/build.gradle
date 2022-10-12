@@ -49,6 +49,11 @@ dependencies {
     //retrofit converter-gson
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 
+    //leakCanary
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.7")
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
+
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
 
