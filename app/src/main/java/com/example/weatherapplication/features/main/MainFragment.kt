@@ -1,4 +1,4 @@
-package com.example.weatherapplication.fragments
+package com.example.weatherapplication.features.main
 
 import android.Manifest
 import android.content.Context
@@ -18,14 +18,19 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.weatherapplication.DialogManager
+import com.example.weatherapplication.common.DialogManager
 import com.example.weatherapplication.MainViewModel
-import com.example.weatherapplication.adapters.VpAdapter
-import com.example.weatherapplication.adapters.WeatherModel
+import com.example.weatherapplication.R
+import com.example.weatherapplication.common.WeatherModel
 import com.example.weatherapplication.databinding.FragmentMainBinding
+import com.example.weatherapplication.features.days.DaysFragment
+import com.example.weatherapplication.features.hours.HoursFragment
+import com.example.weatherapplication.fragments.isPermissionGranted
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
@@ -34,14 +39,16 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
 
-/*
- Улучшить поисковик
-*/
-
 private const val API_KEY =
     "1ab34d3336fc49a9b0291717221109"
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(R.layout.fragment_main) {
+
+    private val viewBinding by viewBinding(FragmentMainBinding::bind,
+    onViewDestroyed = {vb: FragmentMainBinding ->
+        //reset view
+    })
+
     private lateinit var fLocationClient: FusedLocationProviderClient
     private val fList = listOf(
         HoursFragment.newInstance(),
@@ -52,7 +59,7 @@ class MainFragment : Fragment() {
         "DAYS"
     )
     private lateinit var pLauncher: ActivityResultLauncher<String>
-    private lateinit var binding: FragmentMainBinding
+   // private lateinit var binding: FragmentMainBinding
     private val model: MainViewModel by activityViewModels()
 
 
@@ -60,8 +67,8 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainBinding.inflate(inflater, container, false)
-        return binding.root
+       // binding = FragmentMainBinding.inflate(inflater, container, false)
+        return viewBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,7 +83,7 @@ class MainFragment : Fragment() {
         checkLocation()
     }
 
-    private fun init() = with(binding) {
+    private fun init() = with(viewBinding) {
         fLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         val adapter = VpAdapter(activity as FragmentActivity, fList)
         vp.adapter = adapter
@@ -134,7 +141,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun updateCurrentCard() = with(binding) {
+    private fun updateCurrentCard() = with(viewBinding) {
         model.liveDataCurrent.observe(viewLifecycleOwner) {
             val maxMinTemp = "${it.maxTemp}°C / ${it.minTemp}°C"
             val updateData = "Last update: ${it.time}"
@@ -230,3 +237,12 @@ class MainFragment : Fragment() {
     }
 }
 
+class VpAdapter(fa: FragmentActivity, private val list: List<Fragment>) : FragmentStateAdapter(fa) {
+    override fun getItemCount(): Int {
+        return list.size
+    }
+
+    override fun createFragment(position: Int): Fragment {
+        return list[position]
+    }
+}
