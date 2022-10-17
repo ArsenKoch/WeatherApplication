@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.weatherapplication.MainViewModel
@@ -52,6 +53,8 @@ class HoursFragment : Fragment(R.layout.fragment_hours) {
         }
         return list
     }
+
+    class HoursViewModel : ViewModel()
 
     companion object {
         fun newInstance() = HoursFragment()

@@ -16,6 +16,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModel
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
@@ -214,6 +215,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         )
         model.liveDataCurrent.value = item
     }
+
+    class WeatherViewModel : ViewModel()
 
     companion object {
         fun newInstance() = MainFragment()
