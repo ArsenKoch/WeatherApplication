@@ -18,12 +18,7 @@ import org.json.JSONObject
 
 class HoursFragment : Fragment(R.layout.fragment_hours) {
 
-    private val viewBinding by viewBinding(FragmentHoursBinding::bind,
-        onViewDestroyed = { vb: FragmentHoursBinding ->
-
-        })
-
-    //private lateinit var binding: FragmentHoursBinding
+    private val binding by viewBinding(FragmentHoursBinding::bind)
     private lateinit var adapter: WeatherAdapter
     private val model: MainViewModel by activityViewModels()
 
@@ -31,8 +26,7 @@ class HoursFragment : Fragment(R.layout.fragment_hours) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //binding = FragmentHoursBinding.inflate(inflater, container, false)
-        return viewBinding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +37,7 @@ class HoursFragment : Fragment(R.layout.fragment_hours) {
         }
     }
 
-    private fun initRcView() = with(viewBinding) {
+    private fun initRcView() = with(binding) {
         rcView.layoutManager = LinearLayoutManager(activity)
         adapter = WeatherAdapter(null)
         rcView.adapter = adapter

@@ -16,22 +16,15 @@ import com.example.weatherapplication.databinding.FragmentDaysBinding
 
 class DaysFragment : Fragment(R.layout.fragment_days), WeatherAdapter.Listener {
 
-    private val viewBinding by viewBinding(FragmentDaysBinding::bind,
-        onViewDestroyed = { vb: FragmentDaysBinding ->
-            //reset view
-        })
-
+    private val binding by viewBinding(FragmentDaysBinding::bind)
     private lateinit var adapter: WeatherAdapter
-
-    //private lateinit var binding: FragmentDaysBinding
     private val model: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //viewBinding = FragmentDaysBinding.inflate(inflater,container,false)
-        return viewBinding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,7 +35,7 @@ class DaysFragment : Fragment(R.layout.fragment_days), WeatherAdapter.Listener {
         }
     }
 
-    private fun init() = with(viewBinding) {
+    private fun init() = with(binding) {
         adapter = WeatherAdapter(this@DaysFragment)
         rcView.layoutManager = LinearLayoutManager(activity)
         rcView.adapter = adapter
