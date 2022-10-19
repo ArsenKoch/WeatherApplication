@@ -54,8 +54,6 @@ class HoursFragment : Fragment(R.layout.fragment_hours) {
         return list
     }
 
-    class HoursViewModel : ViewModel()
-
     companion object {
         fun newInstance() = HoursFragment()
     }

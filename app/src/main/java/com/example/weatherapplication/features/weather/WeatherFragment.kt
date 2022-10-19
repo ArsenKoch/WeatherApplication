@@ -216,8 +216,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         model.liveDataCurrent.value = item
     }
 
-    class WeatherViewModel : ViewModel()
-
     companion object {
         fun newInstance() = MainFragment()
     }
