@@ -52,6 +52,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     )
     private lateinit var pLauncher: ActivityResultLauncher<String>
     private val model: MainViewModel by activityViewModels()
+    private val binding by viewBinding(FragmentMainBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,8 +60,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         init()
         updateCurrentCard()
     }
-
-    private val binding by viewBinding(FragmentMainBinding::bind)
 
     override fun onResume() {
         super.onResume()

@@ -1,9 +1,7 @@
 package com.example.weatherapplication.features.hours
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +18,7 @@ class HoursFragment : Fragment(R.layout.fragment_hours) {
 
     private lateinit var adapter: WeatherAdapter
     private val model: MainViewModel by activityViewModels()
+    private val binding by viewBinding(FragmentHoursBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,8 +27,6 @@ class HoursFragment : Fragment(R.layout.fragment_hours) {
             adapter.submitList(getHoursList(it))
         }
     }
-
-    private val binding by viewBinding(FragmentHoursBinding::bind)
 
     private fun initRcView() = with(binding) {
         rcView.layoutManager = LinearLayoutManager(activity)

@@ -1,9 +1,7 @@
 package com.example.weatherapplication.features.days
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +16,7 @@ class DaysFragment : Fragment(R.layout.fragment_days), WeatherAdapter.Listener {
 
     private lateinit var adapter: WeatherAdapter
     private val model: MainViewModel by activityViewModels()
+    private val binding by viewBinding(FragmentDaysBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,8 +25,6 @@ class DaysFragment : Fragment(R.layout.fragment_days), WeatherAdapter.Listener {
             adapter.submitList(it.subList(1, it.size))
         }
     }
-
-    private val binding by viewBinding(FragmentDaysBinding::bind)
 
     private fun init() = with(binding) {
         adapter = WeatherAdapter(this@DaysFragment)
