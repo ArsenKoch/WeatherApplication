@@ -18,16 +18,8 @@ import org.json.JSONObject
 
 class HoursFragment : Fragment(R.layout.fragment_hours) {
 
-    private val binding by viewBinding(FragmentHoursBinding::bind)
     private lateinit var adapter: WeatherAdapter
     private val model: MainViewModel by activityViewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,6 +28,8 @@ class HoursFragment : Fragment(R.layout.fragment_hours) {
             adapter.submitList(getHoursList(it))
         }
     }
+
+    private val binding by viewBinding(FragmentHoursBinding::bind)
 
     private fun initRcView() = with(binding) {
         rcView.layoutManager = LinearLayoutManager(activity)

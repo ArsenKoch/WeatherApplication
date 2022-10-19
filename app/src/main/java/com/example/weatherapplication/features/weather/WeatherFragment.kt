@@ -1,4 +1,4 @@
-package com.example.weatherapplication.features.main
+package com.example.weatherapplication.features.weather
 
 import android.Manifest
 import android.content.Context
@@ -8,9 +8,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -43,7 +41,6 @@ private const val API_KEY =
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
-    private val binding by viewBinding(FragmentMainBinding::bind)
     private lateinit var fLocationClient: FusedLocationProviderClient
     private val fList = listOf(
         HoursFragment.newInstance(),
@@ -56,20 +53,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private lateinit var pLauncher: ActivityResultLauncher<String>
     private val model: MainViewModel by activityViewModels()
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         checkPermission()
         init()
         updateCurrentCard()
     }
+
+    private val binding by viewBinding(FragmentMainBinding::bind)
 
     override fun onResume() {
         super.onResume()
