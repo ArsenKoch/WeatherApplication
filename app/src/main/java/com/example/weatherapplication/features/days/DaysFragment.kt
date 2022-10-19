@@ -40,7 +40,4 @@ class DaysFragment : Fragment(R.layout.fragment_days), WeatherAdapter.Listener {
     override fun onClick(item: WeatherModel) {
         model.liveDataCurrent.value = item
     }
-
-    class DaysViewModel : ViewModel()
-
 }
