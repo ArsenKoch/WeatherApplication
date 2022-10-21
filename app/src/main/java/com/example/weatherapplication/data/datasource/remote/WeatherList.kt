@@ -1,6 +1,6 @@
 package com.example.weatherapplication.data.datasource.remote
-// data class на основе gson
-data class QuoteList(
+
+data class WeatherList(
     val city: String,
     val time: String,
     val condition: String,
