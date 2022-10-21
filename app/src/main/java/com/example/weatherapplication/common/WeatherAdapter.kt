@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso
 class WeatherAdapter(private val listener: Listener?) :
     ListAdapter<WeatherModel, WeatherAdapter.Holder>(Comparator()) {
 
-
     class Holder(view: View, private val listener: Listener?) : RecyclerView.ViewHolder(view) {
         private val binding = ListItemBinding.bind(view)
         private var itemTemp: WeatherModel? = null
