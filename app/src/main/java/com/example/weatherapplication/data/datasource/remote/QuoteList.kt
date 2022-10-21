@@ -1,6 +1,6 @@
-package com.example.weatherapplication.common
-
-data class WeatherModel(
+package com.example.weatherapplication.data.datasource.remote
+// data class на основе gson
+data class QuoteList(
     val city: String,
     val time: String,
     val condition: String,
