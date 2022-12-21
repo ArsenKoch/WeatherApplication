@@ -1,6 +1,6 @@
 package com.example.weatherapplication.data.datasource.remote
 
-data class WeatherList(
+data class WeatherForecast(
     val city: String,
     val time: String,
     val condition: String,

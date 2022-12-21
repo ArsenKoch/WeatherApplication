@@ -11,11 +11,11 @@ import com.example.weatherapplication.databinding.ListItemBinding
 import com.squareup.picasso.Picasso
 
 class WeatherAdapter(private val listener: Listener?) :
-    ListAdapter<WeatherModel, WeatherAdapter.Holder>(Comparator()) {
+    ListAdapter<WeatherForecastUI, WeatherAdapter.Holder>(Comparator()) {
 
     class Holder(view: View, private val listener: Listener?) : RecyclerView.ViewHolder(view) {
         private val binding = ListItemBinding.bind(view)
-        private var itemTemp: WeatherModel? = null
+        private var itemTemp: WeatherForecastUI? = null
 
         init {
             itemView.setOnClickListener {
@@ -23,7 +23,7 @@ class WeatherAdapter(private val listener: Listener?) :
             }
         }
 
-        fun bind(item: WeatherModel) = with(binding) {
+        fun bind(item: WeatherForecastUI) = with(binding) {
             itemTemp = item
             tvDate.text = item.time
             tvCondition1.text = item.condition
@@ -32,12 +32,12 @@ class WeatherAdapter(private val listener: Listener?) :
         }
     }
 
-    class Comparator : DiffUtil.ItemCallback<WeatherModel>() {
-        override fun areItemsTheSame(oldItem: WeatherModel, newItem: WeatherModel): Boolean {
+    class Comparator : DiffUtil.ItemCallback<WeatherForecastUI>() {
+        override fun areItemsTheSame(oldItem: WeatherForecastUI, newItem: WeatherForecastUI): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: WeatherModel, newItem: WeatherModel): Boolean {
+        override fun areContentsTheSame(oldItem: WeatherForecastUI, newItem: WeatherForecastUI): Boolean {
             return oldItem == newItem
 
         }
@@ -53,6 +53,6 @@ class WeatherAdapter(private val listener: Listener?) :
     }
 
     interface Listener {
-        fun onClick(item: WeatherModel)
+        fun onClick(item: WeatherForecastUI)
     }
 }

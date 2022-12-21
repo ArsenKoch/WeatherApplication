@@ -1,6 +1,6 @@
 package com.example.weatherapplication.common
 
-data class WeatherModel(
+data class WeatherForecastUI(
     val city: String,
     val time: String,
     val condition: String,

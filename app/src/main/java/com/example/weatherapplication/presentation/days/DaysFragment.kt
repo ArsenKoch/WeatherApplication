@@ -1,4 +1,4 @@
-package com.example.weatherapplication.features.days
+package com.example.weatherapplication.presentation.days
 
 import android.os.Bundle
 import android.view.View
@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.weatherapplication.MainViewModel
+import com.example.weatherapplication.presentation.viewmodel.MainViewModel
 import com.example.weatherapplication.R
 import com.example.weatherapplication.common.WeatherAdapter
-import com.example.weatherapplication.common.WeatherModel
+import com.example.weatherapplication.common.WeatherForecastUI
 import com.example.weatherapplication.databinding.FragmentDaysBinding
 
 class DaysFragment : Fragment(R.layout.fragment_days), WeatherAdapter.Listener {
@@ -36,7 +36,7 @@ class DaysFragment : Fragment(R.layout.fragment_days), WeatherAdapter.Listener {
         fun newInstance() = DaysFragment()
     }
 
-    override fun onClick(item: WeatherModel) {
+    override fun onClick(item: WeatherForecastUI) {
         model.liveDataCurrent.value = item
     }
 }

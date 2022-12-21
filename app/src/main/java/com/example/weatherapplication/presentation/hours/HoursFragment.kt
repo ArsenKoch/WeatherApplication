@@ -1,4 +1,4 @@
-package com.example.weatherapplication.features.hours
+package com.example.weatherapplication.presentation.hours
 
 import android.os.Bundle
 import android.view.View
@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.weatherapplication.MainViewModel
+import com.example.weatherapplication.presentation.viewmodel.MainViewModel
 import com.example.weatherapplication.R
 import com.example.weatherapplication.common.WeatherAdapter
-import com.example.weatherapplication.common.WeatherModel
+import com.example.weatherapplication.common.WeatherForecastUI
 import com.example.weatherapplication.databinding.FragmentHoursBinding
 import org.json.JSONArray
 import org.json.JSONObject
@@ -34,11 +34,11 @@ class HoursFragment : Fragment(R.layout.fragment_hours) {
         rcView.adapter = adapter
     }
 
-    private fun getHoursList(weatherItem: WeatherModel): List<WeatherModel> {
+    private fun getHoursList(weatherItem: WeatherForecastUI): List<WeatherForecastUI> {
         val hoursArray = JSONArray(weatherItem.hours)
-        val list = ArrayList<WeatherModel>()
+        val list = ArrayList<WeatherForecastUI>()
         for (i in 0 until hoursArray.length()) {
-            val item = WeatherModel(
+            val item = WeatherForecastUI(
                 weatherItem.city,
                 (hoursArray[i] as JSONObject).getString("time"),
                 (hoursArray[i] as JSONObject).getJSONObject("condition").getString("text"),
