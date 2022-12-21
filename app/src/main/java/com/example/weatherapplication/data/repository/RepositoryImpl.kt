@@ -5,7 +5,7 @@ import android.util.Log
 import com.example.weatherapplication.common.WeatherForecastUI
 import com.example.weatherapplication.data.datasource.remote.RetrofitHelper
 import com.example.weatherapplication.data.datasource.remote.WeatherApi
-import com.example.weatherapplication.domain.Repository
+import com.example.weatherapplication.domain.repository.Repository
 import com.example.weatherapplication.presentation.viewmodel.MainViewModel
 
 class RepositoryImpl(
