@@ -43,9 +43,18 @@ dependencies {
     //retrofit,OkHttp
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
+    def koin_android_version= "3.2.3"
+
     //koin
-    implementation "org.koin:koin-android-viewmodel:{latest-version}"
-    implementation "org.koin:koin-android:{latest-version}"
+    implementation "io.insert-koin:koin-android:$koin_android_version"
+// No more koin-android-viewmodel, koin-android-scope, koin-android-fragment
+
+// Java Compatibility
+    implementation "io.insert-koin:koin-android-compat:$koin_android_version"
+// Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:$koin_android_version"
+// Navigation Graph
+    implementation "io.insert-koin:koin-androidx-navigation:$koin_android_version"
 
     //gson
     implementation 'com.google.code.gson:gson:2.9.0'
