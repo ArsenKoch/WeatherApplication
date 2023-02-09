@@ -41,11 +41,11 @@
             android:id="@+id/im"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:contentDescription="@string/weather_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground"
-            android:contentDescription="@string/weather_icon" />
+            app:srcCompat="@drawable/ic_launcher_foreground" />
 
         <TextView
             android:id="@+id/tvTemp"
